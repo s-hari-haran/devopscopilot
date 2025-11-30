@@ -24,6 +24,14 @@ router.use((req, res, next) => {
     incidentService = new IncidentService();
     prService = new PullRequestService(repoStore);
     agentStates = new AgentStateService();
+    
+    // Initialize Gemini with API key from environment
+    const apiKey = process.env.GEMINI_API_KEY || 'demo-key';
+    try {
+      geminiService = new GeminiService(apiKey);
+    } catch (error) {
+      console.log('Gemini not initialized, will use demo mode');
+    }
   }
   next();
 });

@@ -15,7 +15,7 @@ class GeminiService {
   async analyzeCode(diff, errorContext, codeSnippet) {
     try {
       const prompt = this.buildAnalysisPrompt(diff, errorContext, codeSnippet);
-      const model = this.client.getGenerativeModel({ model: 'gemini-pro' });
+      const model = this.client.getGenerativeModel({ model: 'gemini-2.0-flash' });
       
       const result = await model.generateContent(prompt);
       const responseText = result.response.text();
