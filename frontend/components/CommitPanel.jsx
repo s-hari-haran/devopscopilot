@@ -2,36 +2,32 @@ import React from 'react';
 
 export default function CommitPanel({ commitId, commitMessage, diff }) {
   return (
-    <div className="bg-black border-t-4 border-black py-4 px-6 flex justify-between items-center">
-      <div className="flex-1">
-        <div className="text-white font-bold text-sm">LATEST COMMIT ID: {commitId}</div>
-        <div className="text-white font-bold text-sm mt-1">COMMIT MESSAGE: {commitMessage}</div>
+    <div className="bg-black border-t-4 border-black py-6 px-6">
+      <div className="mb-4 space-y-2">
+        <p className="text-base font-black uppercase tracking-wide text-white">
+          Latest Commit ID: <span className="text-cyan font-mono ml-2">{commitId}</span>
+        </p>
+        <p className="text-base font-black uppercase tracking-wide text-white">
+          Commit Message: <span className="text-white font-bold ml-2">{commitMessage}</span>
+        </p>
       </div>
       
-      <div className="flex items-center gap-3 text-white font-bold text-sm">
-        {diff && diff.files && diff.files.map((file, idx) => (
-          <div key={idx} className="flex items-center gap-1">
-            {file.status === 'added' && (
-              <>
-                <span>+</span>
-                <span>{file.path.split('/').pop()}</span>
-              </>
-            )}
-            {file.status === 'deleted' && (
-              <>
-                <span>−</span>
-                <span>{file.path.split('/').pop()}</span>
-              </>
-            )}
-            {file.status === 'modified' && (
-              <>
-                <span>~</span>
-                <span>{file.path.split('/').pop()}</span>
-              </>
-            )}
-          </div>
-        ))}
-      </div>
+      {diff && diff.files && (
+        <div className="flex gap-2 flex-wrap mt-4">
+          {diff.files.map((file, idx) => (
+            <div key={idx} className="px-3 py-1 bg-black border-2 border-white">
+              <span className={`text-xs font-mono font-bold ${
+                file.status === 'deleted' ? 'text-red-400' : 
+                file.status === 'added' ? 'text-green-400' : 
+                'text-cyan'
+              }`}>
+                {file.status === 'deleted' ? '~ ' : file.status === 'added' ? '+ ' : '~ '}
+                {file.path}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
