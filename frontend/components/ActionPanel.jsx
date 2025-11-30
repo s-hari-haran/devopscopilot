@@ -1,44 +1,35 @@
 import React from 'react';
 
 export default function ActionPanel({ onInjectBug, onScan, onAnalyze, onAutoFix, loading }) {
-  const buttonClass = (color) => `
-    neo-button w-full mb-3
-    ${color === 'yellow' ? 'bg-yellow text-black hover:bg-yellow' : ''}
-    ${color === 'cyan' ? 'bg-cyan text-black hover:bg-cyan' : ''}
-    ${color === 'pink' ? 'bg-pink text-white hover:bg-pink' : ''}
-    ${color === 'gold' ? 'bg-gold text-black hover:bg-gold' : ''}
-    disabled:opacity-50 disabled:cursor-not-allowed
-  `;
-
   return (
-    <div className="w-full max-w-xs flex flex-col gap-0">
+    <div className="w-full flex flex-col gap-7">
       <button
         onClick={onInjectBug}
         disabled={loading}
-        className={buttonClass('yellow')}
+        className="neo-button bg-yellow text-black uppercase font-black tracking-widest disabled:opacity-50 flex items-center justify-start gap-3 px-8 py-3"
       >
-        🐛 Inject Bug
+        <span className="text-xl">🔬</span> Inject Bug
       </button>
       <button
         onClick={onScan}
         disabled={loading}
-        className={buttonClass('cyan')}
+        className="neo-button bg-cyan text-black uppercase font-black tracking-widest disabled:opacity-50 flex items-center justify-start gap-3 px-8 py-3"
       >
-        🔍 Scan for Issues
+        <span className="text-xl">🔍</span> Scan for Issues
       </button>
       <button
         onClick={onAnalyze}
         disabled={loading}
-        className={buttonClass('pink')}
+        className="neo-button bg-pink text-black uppercase font-black tracking-widest disabled:opacity-50 flex items-center justify-start gap-3 px-8 py-3"
       >
-        ⚙️ Run Analysis
+        <span className="text-xl">⚙️</span> Run Analysis
       </button>
       <button
         onClick={onAutoFix}
         disabled={loading}
-        className={buttonClass('gold')}
+        className="neo-button bg-gold text-black uppercase font-black tracking-widest disabled:opacity-50 flex items-center justify-start gap-3 px-8 py-3"
       >
-        🔧 Auto Fix & Create PR
+        <span className="text-xl">🔧</span> Auto Fix & Create PR
       </button>
     </div>
   );

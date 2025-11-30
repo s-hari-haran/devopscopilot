@@ -145,7 +145,7 @@ export default function Dashboard() {
         {/* Main content area */}
         <div className="flex-1">
           {/* Agent cards grid - 3x2 layout */}
-          <div className="p-6 grid grid-cols-3 gap-4 bg-black">
+          <div className="p-6 grid grid-cols-3 gap-4 bg-black items-stretch">
             {/* Top row */}
             <AgentCard
               title="Monitoring Agent"
@@ -192,7 +192,7 @@ export default function Dashboard() {
         </div>
 
         {/* Right sidebar with action buttons */}
-        <div className="w-72 bg-black border-l-4 border-black p-6 flex flex-col items-center">
+        <div className="w-80 bg-black border-l-4 border-black p-6 flex flex-col items-center">
           <ActionPanel
             onInjectBug={handleInjectBug}
             onScan={handleScan}
@@ -204,9 +204,9 @@ export default function Dashboard() {
       </div>
 
       {/* Bottom panels */}
-      <div className="flex gap-0">
+      <div className="flex gap-0 items-stretch">
         {/* Commit panel on left */}
-        <div className="flex-1 bg-black border-t-4 border-black">
+        <div className="flex-1 bg-black">
           <CommitPanel
             commitId={lastCommit?.id || 'fc94782a'}
             commitMessage={lastCommit?.message || 'Implemented user authentication'}
@@ -215,7 +215,7 @@ export default function Dashboard() {
         </div>
 
         {/* Error context on right */}
-        <div className="w-72 bg-black border-t-4 border-black border-l-4 border-black p-6">
+        <div className="w-80 bg-black border-l-4 border-black">
           <ErrorContext
             errorText={errorMessage || 'DB connection failed'}
           />
