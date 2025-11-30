@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Neo-Brutalism Utilities */
+.neo-border {
+  border: 4px solid #000;
+}
+
+.neo-button {
+  @apply px-6 py-3 font-bold text-sm uppercase tracking-wide cursor-pointer transition-all duration-200 border-4 border-black;
+}
+
+.neo-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+.neo-button:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.neo-card {
+  @apply border-4 border-black p-4;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.status-indicator.error {
+  background: #ef4444;
+}
+
+.animate-pulse-custom {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.running-bars {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.running-bar {
+  width: 3px;
+  height: 16px;
+  background: #000;
+  animation: running 0.8s ease-in-out infinite;
+}
+
+.running-bar:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.running-bar:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes running {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 20px;
+  }
+}
+
+.done-indicator {
+  width: 8px;
+  height: 8px;
+  background: #000;
+}
+
+.idle-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #000;
+  animation: bounce 1.4s infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
+}
